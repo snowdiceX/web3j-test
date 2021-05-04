@@ -10,6 +10,16 @@ $ gradle assemble
 
 [web3j/web3j-cli](https://github.com/web3j/web3j-cli)
 
+``` plain
+# create the project "Web3App"
+$ web3j new helloworld
+
+# import solidity
+# web3j import -s <path to solidity sources> [-o <path>|-n <project name>|-p <package name>] -t
+$ web3j import -s 
+
+```
+
 v1.4.1
 
 ## web3j
