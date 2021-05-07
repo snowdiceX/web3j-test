@@ -10,23 +10,57 @@ $ gradle assemble
 
 [web3j/web3j-cli](https://github.com/web3j/web3j-cli)
 
+``` plain
+# create the project "Web3App"
+$ web3j new helloworld
+
+# Downloading and installing it to ~/.web3j/solc/0.5.4
+# https://ethereum.stackexchange.com/questions/84717/how-to-install-solc-of-a-specific-version
+$ sudo add-apt-repository ppa:ethereum/ethereum
+$ sudo apt-get update
+$ sudo apt-get install solc
+# $ Or
+# $ sudo snap install solc
+$ solc --version
+# docker pull ethereum/solc:0.5.4
+# https://github.com/ethereum/solidity/releases/tag/v0.5.4
+# solc-static-linux
+
+# import solidity
+# web3j import -s <path to solidity sources> [-o <path>|-n <project name>|-p <package name>] -t
+# $ web3j import -s 
+$ web3j import -s ../tenx-token/contracts/
+Error: Source "***" not found: File outside of allowed directories.
+# https://github.com/ethereum/solidity/issues/2742
+
+```
+
 v1.4.1
 
 ## web3j
 
 ``` plain
-$ web3j wallet create  
-0x81a532c7d746b24dc452a0f08974d8a2a4e94fd9  
-[address info](https://goerli.etherscan.io/address/0x81a532c7d746b24dc452a0f08974d8a2a4e94fd9)
+# local dev
+
+# https://github.com/trufflesuite/ganache-cli
+# personal blockchain for Ethereum development
+$ sudo npm install ganache-cli -g
+
+# Start ganache
+$ ganache-cli
+Ganache CLI v***
+Available Accounts
+==================
+***
+Private Keys
+==================
+*** 0x6dddf06c646f12f1ff1f665a584ac69f1b17d3aff81c2fff824db131cecf24d3
 
 $ cd /opt/gopath/src/github.com/web3j/Web3App/build
 
-$ export WEB3J_WALLET_PATH=./keystore/UTC--2021-04-30T03-35-50.269000000Z--81a532c7d746b24dc452a0f08974d8a2a4e94fd9.json; \
-    export WEB3J_WALLET_PASSWORD=12345678; \
-    export WEB3J_NODE_URL="https://goerli.infura.io/v3/62d0c9419a1748b0bfd37cecda72d694"; \
-    java -jar ./libs/Web3App-0.1.0-all.jar  
-
-[Tx info](https://goerli.etherscan.io/tx/0xbd1d9c53fe38d01a69909e110e6a359f4fb87bd27641e631b85c88a998f2018e)
+$ export WEB3J_WALLET_PRIVATE_KEY=0x6dddf06c646f12f1ff1f665a584ac69f1b17d3aff81c2fff824db131cecf24d3; \
+    export WEB3J_NODE_URL="http://localhost:8545"; \
+    java -jar ./libs/Web3App-0.1.0-all.jar
 
 # import private-key?
 $ web3j wallet import [private-key]
